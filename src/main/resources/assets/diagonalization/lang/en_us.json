@@ -1,0 +1,20 @@
+{
+  //items
+  "item.diagonalization.diagonalization_wand": "Diagonalization Wand",
+  "item.diagonalization.infinity_diagonalization_wand": "Infinity Diagonalization Wand",
+
+  //modtab
+  "itemGroup.Diagonalization": "Diagonalization",
+
+  //tooltips
+  "tooltips.diagonalization.vertical_edges": "§7Mode: §eVertical Edges",
+  "tooltips.diagonalization.horizontal_edges": "§7Mode: §bHorizontal Edges",
+  "tooltips.diagonalization.vertices": "§7Mode: §aVertices",
+  "tooltips.diagonalization.range": "§7Range: ",
+
+  //messages
+  "messages.diagonalization.vertical_edges": "§7Mode set to: §eVertical Edges",
+  "messages.diagonalization.horizontal_edges": "§7Mode set to: §bHorizontal Edges",
+  "messages.diagonalization.vertices": "§7Mode set to: §aVertices",
+  "messages.diagonalization.range": "§7Range set to: "
+}
