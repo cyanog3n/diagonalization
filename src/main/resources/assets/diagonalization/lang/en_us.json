@@ -13,8 +13,8 @@
   "tooltips.diagonalization.range": "§7Range: ",
 
   //messages
-  "messages.diagonalization.vertical_edges": "§7Mode set to: §eVertical Edges",
-  "messages.diagonalization.horizontal_edges": "§7Mode set to: §bHorizontal Edges",
-  "messages.diagonalization.vertices": "§7Mode set to: §aVertices",
-  "messages.diagonalization.range": "§7Range set to: "
+  "messages.diagonalization.vertical_edges": "Mode set to: §eVertical Edges",
+  "messages.diagonalization.horizontal_edges": "Mode set to: §bHorizontal Edges",
+  "messages.diagonalization.vertices": "Mode set to: §aVertices",
+  "messages.diagonalization.range": "Range set to: "
 }

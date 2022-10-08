@@ -89,7 +89,7 @@ public class DiagonalizationWandItem extends Item {
             }
 
             if(level.isClientSide){
-                player.sendMessage(message, player.getUUID());
+                player.displayClientMessage(message, true);
             }
         }
         else if(!isAirOrFluid(block)){

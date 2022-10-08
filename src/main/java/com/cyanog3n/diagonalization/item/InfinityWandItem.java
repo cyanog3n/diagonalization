@@ -1,8 +1,6 @@
 package com.cyanog3n.diagonalization.item;
 
 import com.cyanog3n.diagonalization.PlacementHelper;
-import com.cyanog3n.diagonalization.network.PacketHandler;
-import com.cyanog3n.diagonalization.network.UpdateToServer;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -97,7 +95,7 @@ public class InfinityWandItem extends DiagonalizationWandItem {
             }
 
             if(level.isClientSide){
-                player.sendMessage(message, player.getUUID());
+                player.displayClientMessage(message, true);
             }
         }
         else if(!isAirOrFluid(block)){

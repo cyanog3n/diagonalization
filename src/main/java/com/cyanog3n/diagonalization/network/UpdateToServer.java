@@ -2,7 +2,6 @@ package com.cyanog3n.diagonalization.network;
 
 import com.cyanog3n.diagonalization.item.ItemInit;
 import net.minecraft.ChatFormatting;
-import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.MutableComponent;
@@ -10,7 +9,6 @@ import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -73,7 +71,8 @@ public class UpdateToServer {
                 tag.putInt("range", range);
 
                 MutableComponent rangeComponent = new TextComponent(String.valueOf(range)).withStyle(ChatFormatting.LIGHT_PURPLE);
-                serverPlayer.sendMessage(new TranslatableComponent("messages.diagonalization.range").append(rangeComponent), serverPlayer.getUUID());
+                serverPlayer.displayClientMessage(
+                        new TranslatableComponent("messages.diagonalization.range").append(rangeComponent), true);
             }
 
             success.set(true);
