@@ -21,6 +21,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.client.event.DrawSelectionEvent;
+import net.minecraftforge.client.model.IModelBuilder;
 import net.minecraftforge.client.model.ModelDataManager;
 import net.minecraftforge.client.model.data.IModelData;
 
@@ -37,6 +38,7 @@ public class PreviewBlockRenderer {
         MultiBufferSource source = event.getMultiBufferSource();
         BlockState state = level.getBlockState(pos);
         Entity e = event.getCamera().getEntity();
+        long tick =level.getGameTime();
 
         if(e instanceof Player player && level.isClientSide){
             ItemStack item = player.getItemInHand(InteractionHand.MAIN_HAND);
@@ -59,10 +61,10 @@ public class PreviewBlockRenderer {
 
                     if(offhand.getItem() instanceof BlockItem block){
                         BlockState offhandState = block.getBlock().defaultBlockState();
-                        renderBlock(offhandState, targetpos, poseStack, source);
+                        renderBlock(offhandState, targetpos, poseStack, source, tick);
                     }
                     else{
-                        renderBlock(state, targetpos, poseStack, source);
+                        renderBlock(state, targetpos, poseStack, source, tick);
                     }
                 }
             }
@@ -81,7 +83,7 @@ public class PreviewBlockRenderer {
                 for(int i = 1; i<=range; ++i){
 
                     if(isValid(targetpos, level)){
-                        renderBlock(renderState, targetpos, poseStack, source);
+                        renderBlock(renderState, targetpos, poseStack, source, tick);
                     }
                     targetpos = PlacementHelper.getEdgePlacement(targetpos, lookAngle, coordinates, mode, direction);
                 }
@@ -91,7 +93,7 @@ public class PreviewBlockRenderer {
         }
     }
 
-    private static void renderBlock(BlockState state, BlockPos pos, PoseStack stack, MultiBufferSource source){
+    private static void renderBlock(BlockState state, BlockPos pos, PoseStack stack, MultiBufferSource source, long tick){
         BlockRenderDispatcher renderer = Minecraft.getInstance().getBlockRenderer();
         ClientLevel level = Minecraft.getInstance().level;
         IModelData data = renderer.getBlockModel(state).getModelData(level, pos, state, ModelDataManager.getModelData(level, pos));
@@ -99,8 +101,8 @@ public class PreviewBlockRenderer {
         Vec3 cameraPos = Minecraft.getInstance().gameRenderer.getMainCamera().getPosition();
 
         stack.pushPose();
-        int brightness = 255;
-        int overlay = OverlayTexture.NO_WHITE_U;
+        int brightness = (int) ((200 * (Math.sin(0.2 * tick)+1)) / 2) + 55;
+        int overlay = OverlayTexture.NO_OVERLAY;
 
         stack.translate(pos.getX() - cameraPos.x, pos.getY() - cameraPos.y, pos.getZ() - cameraPos.z);
 
